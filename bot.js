@@ -1,6 +1,8 @@
 const { Telegraf } = require("telegraf");
+const dotenv = require("dotenv");
+dotenv.config();
 
-const bot = new Telegraf("YOUR_BOT_TOKEN_HERE"); // better use .env
+const bot = new Telegraf(process.env.BOT_TOKEN); // better use .env
 
 bot.start((ctx) => ctx.reply("I'm Running on Telegraf")); // will be executed when /start 
 bot.command("help", (ctx) => ctx.reply("Help Works")); // works when you type /help

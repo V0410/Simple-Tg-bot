@@ -2,7 +2,7 @@
 const { Telegraf } = require("telegraf");
 const { menu } = require("./assert/menu");
 const { boost } = require("./assert/boost/index");
-const { referals } = require("./assert/referals/index");
+const { referrals } = require("./assert/referrals/index");
 const { support } = require("./assert/support/index");
 
 const dotenv = require("dotenv");
@@ -29,8 +29,8 @@ bot.start((ctx) => ctx.reply(
 
 bot.action('boost', (ctx) =>
   ctx.reply(boost.message, boost.button));
-bot.action('referals', (ctx) =>
-  ctx.reply(referals.message, referals.button));
+bot.action('referrals', (ctx) =>
+  ctx.reply(referrals.message, referrals.button));
 bot.action('support', (ctx) =>
   ctx.reply(support.message, support.button));
 bot.action('learn_more', async (ctx) =>

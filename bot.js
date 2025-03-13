@@ -42,6 +42,10 @@ bot.action('fast', (ctx) => (
   ctx.reply(fast.message, fast.button)
 ))
 
+bot.action('pumpfun', (ctx) => (
+  ctx.reply(raydium.message, raydium.button)
+))
+
 bot.action('referrals', (ctx) =>
   ctx.reply(referrals.message, referrals.button));
 bot.action('support', (ctx) =>

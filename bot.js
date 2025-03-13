@@ -9,7 +9,6 @@ const { support } = require("./assert/support/index");
 const { raydium } = require("./assert/boost/raydium");
 
 const dotenv = require("dotenv");
-const { raydium } = require("./assert/boost/raydium");
 dotenv.config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN); // better use .env

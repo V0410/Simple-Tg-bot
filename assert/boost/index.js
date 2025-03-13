@@ -12,7 +12,7 @@ const boost = {
         [Markup.button.callback('Raydium 🟣', 'raydium')],
         [Markup.button.callback('PumpFun 🟢', 'pumpFun')],
         [Markup.button.callback('Meteora 🟠', 'meteora')],
-        [Markup.button.callback('Moonshot 🟡', 'moonsho')],
+        [Markup.button.callback('Moonshot 🟡', 'moonshot')],
         [Markup.button.callback('Learn more 🔗', 'learn_more')],
         [Markup.button.callback('👈  Return', 'return')]
     ])

@@ -50,7 +50,7 @@ bot.action('meteora', (ctx) => (
   ctx.reply(raydium.message, raydium.button)
 ))
 
-bot.action('moonsho', (ctx) => (
+bot.action('moonshot', (ctx) => (
   ctx.reply(raydium.message, raydium.button)
 ))
 

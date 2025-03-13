@@ -6,8 +6,10 @@ const { menu } = require("./assert/menu");
 const { boost } = require("./assert/boost/index");
 const { referrals } = require("./assert/referrals/index");
 const { support } = require("./assert/support/index");
+const { raydium } = require("./assert/boost/raydium");
 
 const dotenv = require("dotenv");
+const { raydium } = require("./assert/boost/raydium");
 dotenv.config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN); // better use .env
@@ -35,11 +37,14 @@ bot.action('referrals', (ctx) =>
   ctx.reply(referrals.message, referrals.button));
 bot.action('support', (ctx) =>
   ctx.reply(support.message, support.button));
-bot.action('learn_more', async (ctx) =>
-  {
-    await ctx.answerCbQuery(); // Answer the callback query
+bot.action('learn_more', async (ctx) => {
+  await ctx.answerCbQuery(); // Answer the callback query
   await ctx.telegram.sendMessage(ctx.chat.id, 'Learn more selected!');
-  })
+})
+
+bot.action('raydium', (ctx) => (
+  ctx.reply(raydium.message, raydium.button)
+))
 
 bot.action('return', (ctx) =>
   ctx.reply(menu.message, menu.button));

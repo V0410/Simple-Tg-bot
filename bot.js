@@ -1,32 +1,46 @@
 
-const { Telegraf, Markup } = require("telegraf");
-const { welcomeMessage, BUTTONS } = require("./assert/welcome");
-const { boostMessage, POOL_OPTIONS } = require("./assert/boost");
+const { Telegraf } = require("telegraf");
+const { menu } = require("./assert/menu");
+const { boost } = require("./assert/boost/index");
+const { referals } = require("./assert/referals/index");
+const { support } = require("./assert/support/index");
+
 const dotenv = require("dotenv");
 dotenv.config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN); // better use .env
 
-
+const welcomeMessage =
+  `*Welcome to Orbit MM\!* 🚀\n\n` +
+  `Experience the unique power of *Orbit MM's Solana Volume Boosting*\n` +
+  `Service optimized for *Solana* and *Pumpfun*, designed to attract *new organic investors*\n\n` +
+  `*Here's How:*\n` +
+  `⚡ *3 Modes:* Choose between *Fast Mode* \\(up to 6h\\), *Normal Mode* \\(up to 24h\\), or *Steady Mode* \\(up to 7 days\\).\n` +
+  `📦 *Package Selection:* From *9 to 60 SOL*, tailored to your budget.\n` +
+  `🤖 *MicroBots:* Up to *6 MicroBots* per package, each adding *2 tx per minute*.\n` +
+  `😏 *FOMO Creation:* High volume from unique wallets creates *powerful FOMO* for your project.\n` +
+  `✨ *Organic Trending:* High transaction rates drive *natural visibility* on crypto platforms.\n\n` +
+  `*Get Started!*\nBoost your market presence discreetly and effectively with *Orbit MM*.\n`;
 
 bot.start((ctx) => ctx.reply(
   welcomeMessage,
-  Markup.inlineKeyboard(
-    BUTTONS.map(row =>
-      [row.map(button => `${[Markup.button.callback(button.text, button.action)]}, `)]
-    ),
-    {
-      columns: 2,
-      row_height: 2,
-      resize_keyboard: true,
-      one_time_keyboard: true,
-      selective: true,
-    }
-  )
+  menu.button
 )); // will be executed when /start 
 
 bot.action('boost', (ctx) =>
-  ctx.reply(boostMessage, Markup.inlineKeyboard(POOL_OPTIONS.map(option => [Markup.button.callback(option.text, option.action)]))));
+  ctx.reply(boost.message, boost.button));
+bot.action('referals', (ctx) =>
+  ctx.reply(referals.message, referals.button));
+bot.action('support', (ctx) =>
+  ctx.reply(support.message, support.button));
+bot.action('learn_more', async (ctx) =>
+  {
+    await ctx.answerCbQuery(); // Answer the callback query
+  await ctx.telegram.sendMessage(ctx.chat.id, 'Learn more selected!');
+  })
+
+bot.action('return', (ctx) =>
+  ctx.reply(menu.message, menu.button));
 bot.command("help", (ctx) => ctx.reply("Help Works")); // works when you type /help
 bot.on("sticker", (ctx) => // when bot recives a sticker , it reply with a sticker according to the sticker-id mention in replyWithSticker()
   ctx.replyWithSticker(

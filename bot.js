@@ -6,7 +6,8 @@ const { menu } = require("./assert/menu");
 const { boost } = require("./assert/boost/index");
 const { referrals } = require("./assert/referrals/index");
 const { support } = require("./assert/support/index");
-const { raydium } = require("./assert/boost/raydium");
+const { raydium } = require("./assert/boost/raydium/index");
+const { fast } = require("./assert/boost/raydium/fast");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -32,6 +33,15 @@ bot.start((ctx) => ctx.reply(
 
 bot.action('boost', (ctx) =>
   ctx.reply(boost.message, boost.button));
+
+bot.action('raydium', (ctx) => (
+  ctx.reply(raydium.message, raydium.button)
+))
+
+bot.action('fast', (ctx) => (
+  ctx.reply(fast.message, fast.button)
+))
+
 bot.action('referrals', (ctx) =>
   ctx.reply(referrals.message, referrals.button));
 bot.action('support', (ctx) =>
@@ -41,9 +51,7 @@ bot.action('learn_more', async (ctx) => {
   await ctx.telegram.sendMessage(ctx.chat.id, 'Learn more selected!');
 })
 
-bot.action('raydium', (ctx) => (
-  ctx.reply(raydium.message, raydium.button)
-))
+
 
 bot.action('return', (ctx) =>
   ctx.reply(menu.message, menu.button));

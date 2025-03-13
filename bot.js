@@ -50,6 +50,10 @@ bot.action('meteora', (ctx) => (
   ctx.reply(raydium.message, raydium.button)
 ))
 
+bot.action('moonsho', (ctx) => (
+  ctx.reply(raydium.message, raydium.button)
+))
+
 bot.action('referrals', (ctx) =>
   ctx.reply(referrals.message, referrals.button));
 bot.action('support', (ctx) =>

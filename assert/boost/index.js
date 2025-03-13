@@ -8,7 +8,7 @@ const boost = {
         `🟢 PumpFun: After your token completes the bonding curve on PumpFun and transitions to Raydium, Orbitt MM will seamlessly continue the volume-boosting process on Raydium.\n` +
         `🟠 Meteora: Orbitt MM will identify your pool on Meteora and apply volume-boosting strategies specifically optimized for the platform.\n` +
         `🟡 Moonshot: After reaching market cap milestones, the token transitions to Raydium or Meteora, where Orbitt MM continues volume-boosting seamlessly.`,
-    button: Markup.inlineKeyboard([
+    button: Markup.inlineKeyboard([ 
         [Markup.button.callback('Raydium 🟣', 'raydium')],
         [Markup.button.callback('PumpFun 🟢', 'pumpFun')],
         [Markup.button.callback('Meteora 🟠', 'meteora')],
